@@ -28,6 +28,7 @@ github_username:  jekyll
 markdown: kramdown
 collections:
   products:
+    output: true
     permalink: /:collection/:path
 plugins:
   - jekyll-feed
