@@ -1,7 +1,4 @@
 ---
-pages:
-- _products/second-product.md
-- _products/squid-invader-hat.md
 hide_body: false
 fields:
 - type: text
