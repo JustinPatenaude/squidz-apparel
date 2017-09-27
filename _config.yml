@@ -28,7 +28,7 @@ github_username:  jekyll
 markdown: kramdown
 collections:
   products:
-    permalink: pretty
+    permalink: /:collection/:path
 plugins:
   - jekyll-feed
 
