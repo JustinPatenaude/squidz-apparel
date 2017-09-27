@@ -4,6 +4,14 @@ pages:
 hide_body: false
 fields:
 - type: text
+  name: layout
+  label: Layout
+  description: The layout of the page
+  hidden: true
+  config:
+    required: true
+  default: product
+- type: text
   label: ID
   name: id
   description: The product id
