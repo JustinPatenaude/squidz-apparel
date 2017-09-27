@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<div class="product">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }} | {{ page.price }}</h1>
+  </header>
+
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    
+    <button id="customButton">Purchase</button>
+    
+    <script>
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_3OU8GKAVPeVzz4XHKbBIOOtQ',
+      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+      locale: 'auto',
+      token: function(token) {
+        var payload = {
+          amount: '{{ page.price }}' * 1,
+          description: 'Navy',
+          stripeToken: token.id,
+          stripeTokenType: token.type,
+          stripeEmail: token.email
+        }
+        $.ajax({
+          type: 'POST',
+          url: 'https://squidz-checkout.herokuapp.com/',
+          crossDomain: true,
+          data: payload,
+          dataType: 'json',
+          success: function(data, textStatus, jqXHR) {
+            window.location.replace('/success');
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            window.location.replace('/error');
+          },
+        });
+      }
+    });
+    
+    document.getElementById('customButton').addEventListener('click', function(e) {
+      // Open Checkout with further options:
+      handler.open({
+        name: '{{ page.title }}',
+        description: 'Navy',
+        amount: '{{ page.price }}' * 1
+      });
+      e.preventDefault();
+    });
+    
+    // Close Checkout on page navigation:
+    window.addEventListener('popstate', function() {
+      handler.close();
+    });
+    </script>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</div>
