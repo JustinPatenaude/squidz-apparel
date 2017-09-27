@@ -16,6 +16,7 @@ layout: default
       key: 'pk_test_3OU8GKAVPeVzz4XHKbBIOOtQ',
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
+      shippingAddress: true,
       token: function(token) {
         var payload = {
           amount: '{{ page.price }}' * 1,
