@@ -7,7 +7,7 @@ fields:
   name: layout
   label: Layout
   description: The layout of the page
-  hidden: true
+  hidden: ''
   config:
     required: true
   default: product
